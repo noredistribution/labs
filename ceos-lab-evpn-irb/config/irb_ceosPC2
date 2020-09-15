@@ -1,0 +1,35 @@
+! Startup-config last modified at Mon Sep 14 23:04:17 2020 by root
+! device: PC2 (cEOSLab, EOS-4.24.2.1F-18613460.42421F (engineering build))
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+agent Bfd shutdown
+agent PowerManager shutdown
+agent LedPolicy shutdown
+agent Thermostat shutdown
+agent PowerFuse shutdown
+agent StandbyCpld shutdown
+agent LicenseManager shutdown
+!
+hostname PC2
+!
+spanning-tree mode mstp
+!
+no aaa root
+!
+vlan 45,50,55,60,65,155
+!
+interface Ethernet1
+   switchport mode trunk
+!
+interface Vlan50
+   ip address 10.0.50.11/24
+!
+interface Vlan60
+   ip address 10.0.60.11/24
+!
+ip routing
+!
+end
