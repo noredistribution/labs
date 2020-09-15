@@ -7,7 +7,8 @@ PC1 (et1) --- (et3) Leaf1 (et1) --- (et1) Spine1 (et2) --- (et1) Leaf2 (et3) ---
 ### Testbed
 
 Server: Docker running on Centos 7.7
-Containers: Arista cEOS-lab 4.24.2.1F
+
+Container image: Arista cEOS-lab 4.24.2.1F
 
 ### Deployment
 
@@ -23,9 +24,11 @@ pip install git+https://github.com/networkop/docker-topo.git
 ```
 
 Copy the yml file and the config dir
+
 `cp -r ~/projects/labs/ceos-lab-evpn-irb/* topo-extra-files/examples/v2/`
 
 Create the topology
+
 ```
 cd topo-extra-files/examples/v2/
 docker-topo --create evpn.yml
@@ -56,6 +59,7 @@ evpn                      4094
 ```
 
 List the RPF values (note that you'll have to switch to the correct namespace)
+
 ```
 Leaf1(config-if-Et3)#cli vrf tenant-blue
 Leaf1(vrf:tenant-blue)(config-if-Et3)#bash
@@ -67,12 +71,14 @@ net.ipv4.conf.vlan4094.rp_filter = 1
 ```
 
 Disable RPF for each EVPN internal vlan (do this on all VTEPs)
+
 ```
 bash-4.2# echo "0" > /proc/sys/net/ipv4/conf/vlan4094/rp_filter
 bash-4.2# echo "0" > /proc/sys/net/ipv4/conf/all/rp_filter
 ```
 
 Verify that RPF is reset
+
 ```
 bash-4.2# sysctl -a | grep vlan4094.rp_filter
 net.ipv4.conf.vlan4094.rp_filter = 0
@@ -100,6 +106,7 @@ rtt min/avg/max/mdev = 19.241/19.241/19.241/0.000 ms
 ```
 
 Useful commands:
+
 ```
 Leaf1#show bgp evpn route-type ip-prefix ipv4
 BGP routing table information for VRF default
