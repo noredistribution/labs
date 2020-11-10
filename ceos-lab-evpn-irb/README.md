@@ -15,7 +15,7 @@ Container image: Arista cEOS-lab 4.24.2.1F
 I've used [https://github.com/networkop/docker-topo](https://github.com/networkop/docker-topo) to build the topology which eases 
 docker network topology creations a lot!
 
-Works both with and without virtualenv (python3 is required).
+Works both with and without virtualenv $(python3 is required).
 
 ```
 python3 -m virtualenv -p (which python3) venv; cd venv
