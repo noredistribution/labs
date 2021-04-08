@@ -18,7 +18,7 @@ docker network topology creations a lot!
 Works both with and without virtualenv $(python3 is required).
 
 ```
-python3 -m virtualenv -p (which python3) venv; cd venv
+python3 -m virtualenv -p $(which python3) venv; cd venv
 source bin/activate
 pip install git+https://github.com/networkop/docker-topo.git
 ```
